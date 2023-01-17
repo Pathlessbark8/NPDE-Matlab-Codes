@@ -1,0 +1,62 @@
+x = [];
+y = [];
+z = [];
+n_x = [];
+n_y = [];
+n_z = [];
+ind={100001,100002,100500};
+% for i= 000001:1:1000000
+% % for k= 1:length(ind);
+% %     i=ind{k};
+%     if (partGrid1000000.status(i) == 1 || (partGrid1000000.status(i) == 3 && mod(i,100001)<=500))
+% %         disp(i);
+% %         if(partGrid1000000.x(i)==1 && partGrid1000000.y(i)==0.01)
+% %             x(end+1) = partGrid1000000.x(i);
+% %             y(end+1) = partGrid1000000.y(i);
+% %             z(end+1) = partGrid1000000.z(i);
+% %             tt=partGrid1000000.nor1(100500)*partGrid1000000.nor1(100002)+partGrid1000000.nor2(100500)*partGrid1000000.nor2(100002)+partGrid1000000.nor3(100500)*partGrid1000000.nor3(100002);
+% %             n_x(end+1) = (partGrid1000000.nor1(100500)+partGrid1000000.nor1(100002))/(1+tt);
+% %             n_y(end+1) = (partGrid1000000.nor2(100500)+partGrid1000000.nor2(100002))/(1+tt);
+% %             n_z(end+1) = (partGrid1000000.nor3(100500)+partGrid1000000.nor3(100002))/(1+tt);
+% %         else
+%             x(end+1) = partGrid1000000.x(i);
+%             y(end+1) = partGrid1000000.y(i);
+%             z(end+1) = partGrid1000000.z(i);
+%             n_x(end+1) = partGrid1000000.nor1(i);
+%             n_y(end+1) = partGrid1000000.nor2(i);
+%             n_z(end+1) = partGrid1000000.nor3(i);
+% %         end
+%     end
+% end
+
+
+% for i= 800001:1:1000000
+%     if (partGrid1000000.status(i) == 1 || (partGrid1000000.status(i) == 3 && mod(i,100001)<=500))
+%             x(end+1) = partGrid1000000.x(i);
+%             y(end+1) = partGrid1000000.y(i);
+%             z(end+1) = partGrid1000000.z(i);
+%             n_x(end+1) = partGrid1000000.tan11(i);
+%             n_y(end+1) = partGrid1000000.tan12(i);
+%             n_z(end+1) = partGrid1000000.tan13(i);
+%     end
+% end
+
+for i= 800001:1:1000000
+    if ((partGrid1000000.status(i) == 1 && mod(i+1,100000)<=1) || (partGrid1000000.status(i) == 3 && mod(i+1,100000)<=1))
+        disp(i);
+        disp(mod(i,100000));
+            x(end+1) = partGrid1000000.x(i);
+            y(end+1) = partGrid1000000.y(i);
+            z(end+1) = partGrid1000000.z(i);
+            n_x(end+1) = partGrid1000000.tan21(i);
+            n_y(end+1) = partGrid1000000.tan22(i);
+            n_z(end+1) = partGrid1000000.tan23(i);
+    end
+end
+
+h1=quiver3(x, y, z, n_x, n_y, n_z)
+set(h1,'AutoScale','on', 'AutoScaleFactor', 0.5)
+xlabel('X') 
+ylabel('Y')
+zlabel('Z')
+    
